@@ -1,0 +1,239 @@
+body{
+    overflow: hidden;
+    margin: 0;
+}
+
+.outer {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    align-items: stretch;
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+.left, .right{
+    flex: .5;
+    padding: 20px;
+}
+
+.left  textarea,
+.right  pre {
+    width: 100%;
+}
+
+.left{
+    background-color: #444;
+    color: #e5e2b4;
+    display: flex;
+    flex-direction: column;
+}
+
+.right{
+    background-color: #fffde7;
+}
+
+.right h3{
+    padding-left: 20px;
+}
+
+.right pre{
+    width: auto!important;
+    height: 100vh;
+    white-space: break-spaces;
+    padding: 20px;
+    padding-bottom: 100px;
+    font-size: 1rem;
+    overflow: auto;
+}
+
+.left textarea {
+    background-color: transparent;
+    border: none;
+    overflow: auto;
+    outline: none;
+    color: #888;
+    resize: none;
+}
+
+
+.left h3 {
+    padding-left: 0;
+}
+
+
+
+#files {
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    height: 100px;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, .1);
+    padding: 20px 0;
+}
+
+#files ul {
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+    line-height: 1.2rem;
+    list-style: none;
+}
+
+#files ul li {
+    padding:2px 20px;
+    color: #b0ae8e;
+}
+
+#files ul li.active {
+    background-color: #fffde720;
+    color: #fff200;
+}
+
+
+.resultDoc {
+    position: absolute;
+    z-index: 1;
+    backdrop-filter: blur(5px);
+    background-color: #44444410;
+    top: 0;
+    right: 50%;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
+    align-items: stretch;
+    justify-content: space-evenly;
+
+    display: none;
+}
+
+#doc {
+    position: relative;
+    background-color: #fff;
+    box-shadow: 5px 5px 15px 0 #000;
+    margin: 50px 150px;
+    flex: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+
+    color: #000;
+    padding: 25px;
+    font-family: "Times New Roman", sans-serif;
+
+    scrollbar-width: auto;
+    scrollbar-color: #aaa #fff;
+
+
+}
+
+#doc p {
+    font-size: 1rem;
+    line-height: 1.6rem;
+    font-family: Arial, sans-serif;
+}
+
+#doc h3 {
+    margin-top: 100px;
+}
+
+
+
+
+/* Chrome, Edge, and Safari */
+#doc::-webkit-scrollbar {
+    width: 10px;
+    cursor: pointer;
+}
+
+#doc::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+#doc::-webkit-scrollbar-thumb {
+    background-color: #aaa;
+    border-radius: 0;
+    border: 3px solid #fff;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+.loader {
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+    left: 50%;
+    margin-left: -20px;
+
+    width: 48px;
+    height: 48px;
+    border: 3px solid rgba(0, 0, 0, 0.02);
+    border-radius: 50%;
+    display: none;
+    background-color: #444;
+
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+.loader::after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-bottom-color: #58eeff;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #FFFDE7 #444;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 10px;
+    cursor: pointer;
+}
+
+*::-webkit-scrollbar-track {
+    background: #444;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #FFFDE7;
+    border-radius: 5px;
+    border: 3px solid #444;
+    cursor: pointer;
+}

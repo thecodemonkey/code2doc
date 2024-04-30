@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code2Doc</title>
+    <link href="styles.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div class="outer">
+        <div class="left">
+            <div style="flex: auto">
+                <h3 onclick="startDocGeneration()">code</h3>
+                <textarea rows="25"  onchange="generateDocs(this.value)" spellcheck="false" id="plain_code"></textarea>
+            </div>
+            <div>
+                <h3>context</h3>
+                <textarea rows="5"  spellcheck="false" id="context">Dieser Code ist ein Teil eines Tutorials, das die Funktionsweise von Kafka und Microservices demonstrieren soll</textarea>
+            </div>
+            <div>
+                <h3 onclick="stopCodeGeneration()">gh repository</h3>
+                <textarea rows="1"  spellcheck="false" onchange="loadCode(this.value)" placeholder="gib ein gh repo an orga/name"></textarea>
+            </div>
+            <div id="files">
+                <ul id="filesUL"></ul>
+            </div>
+
+            <div class="resultDoc" id="resultDoc" onclick="appendDiagram()">
+                <div id="doc">
+                    <h2 id="title">[Title]</h2>
+
+                    <h3 id="ttl1">1. Einführung</h3>
+                    <p id="ch1">...</p>
+
+                    <h3  id="ttl2">2. Motivation</h3>
+                    <p id="ch2">...</p>
+
+                    <h3  id="ttl3">3. Funktionalität</h3>
+                    <p  id="ch3">...</p>
+
+                    <h3  id="ttl4">4. Architektur</h3>
+                    <p  id="ch4">...</p>
+
+                    <div id="diagramContainer" >
+
+                    </div>
+
+                    <h3  id="ttl5">5. Zusammenfassung</h3>
+                    <p  id="ch5">...</p>
+
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
+        <div  class="right">
+            <h3 onclick="createPDF()">docs</h3>
+            <pre id="result">...</pre>
+        </div>
+    </div>
+    <span class="loader" id="loader"></span>
+    <script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js">
+        let config = {
+            startOnLoad:false,
+            theme:'dark',
+            align:'center'
+        };
+        window.mermaid.initialize(config);
+        window.mermaid.mermaidAPI.initialize();
+    </script>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    <script src="client.js"></script>
+</body>
+</html>
